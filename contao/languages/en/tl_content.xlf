@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+  <body>
+    <file>
+      <trans-unit id="tl_content.useCookiebarOptin.0">
+        <target>Use Cookiebar Opt-In</target>
+      </trans-unit>
+      <trans-unit id="tl_content.useCookiebarOptin.1">
+        <target>Enable Opt-In for this content element.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.cookieId.0">
+        <target>Cookie Configuration</target>
+      </trans-unit>
+      <trans-unit id="tl_content.cookieId.1">
+        <target>Select the cookie configuration that is needed for the consent.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.cookiebarOptinText.0">
+        <target>Message (blocked)</target>
+      </trans-unit>
+      <trans-unit id="tl_content.cookiebarOptinText.1">
+        <target>This message appears when the content element is blocked due to not having consent.</target>
+      </trans-unit>
+      <trans-unit id="tl_content.cookiebarOptinImage.0">
+        <target>Background Image</target>
+      </trans-unit>
+      <trans-unit id="tl_content.cookiebarOptinImage.1">
+        <target>Here you can select an image to be displayed in the background.</target>
+      </trans-unit>
+    </file>
+  </body>
+</xliff>

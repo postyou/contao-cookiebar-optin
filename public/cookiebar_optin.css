@@ -1,0 +1,6 @@
+[id^="cookiebar-optin-"].has-background {
+    background-image: var(--cookiebar-optin-background);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

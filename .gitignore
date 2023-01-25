@@ -1,0 +1,10 @@
+# Composer
+/composer.lock
+/vendor/
+
+# Configuration
+/.vscode/
+.php-version
+
+# php-cs-fixer
+.php-cs-fixer.cache

@@ -1,0 +1,23 @@
+<div id="cookiebar-optin-<?= $this->id ?>" class="cookiebar-optin<?php if ($this->backgroundImage): ?> has-background<?php endif; ?>" <?php if ($this->backgroundImage): ?>style="--cookiebar-optin-background:url('<?= $this->backgroundImage ?>');"<?php endif; ?>>
+    <script>
+        function _getContent<?= $this->id ?>() {
+            fetch('/_cookiebarOptin/<?= $this->id ?>')
+                .then((res) => res.text())
+                .then((data) => {
+                    const $el = $('#cookiebar-optin-<?= $this->id ?>');
+                    $el.replaceWith(data);
+                });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            cookiebar.addModule(<?= $this->cookieId ?>, _getContent<?= $this->id ?>, {
+                selector: '#cookiebar-optin-<?= $this->id ?>',
+                message: '<?= $this->text ?>',
+                button: {
+                    show: true,
+                    text: 'Akzeptieren & Inhalte laden',
+                }
+            });
+        });
+    </script>
+</div>

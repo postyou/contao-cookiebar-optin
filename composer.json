@@ -1,0 +1,42 @@
+{
+    "name": "postyou/contao-cookiebar-optin",
+    "type": "contao-bundle",
+    "description": "Extends the contao cookiebar from oveleon",
+    "license": "LGPL-3.0+",
+    "authors": [
+        {
+            "name": "POSTYOU Digital- & Filmagentur",
+            "homepage": "https://www.postyou.de"
+        }
+    ],
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "contao/core-bundle": "^4.9",
+        "symfony/config": "^4.4 || ^5.4",
+        "symfony/dependency-injection": "^4.4 || ^5.4",
+        "symfony/http-kernel": "^4.4 || ^5.4",
+        "oveleon/contao-cookiebar": "^1.12"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0",
+        "friendsofphp/php-cs-fixer": "3.3.1"
+    },
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Postyou\\ContaoCookiebarOptin\\": "src/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Postyou\\ContaoCookiebarOptin\\ContaoManager\\Plugin"
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "contao/manager-plugin": true,
+            "composer/package-versions-deprecated": true
+        }
+    }
+}

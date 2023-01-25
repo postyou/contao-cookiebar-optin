@@ -1,0 +1,3 @@
+postyou_cookiebar_optin.controller:
+    resource: ../src/Controller
+    type: annotation

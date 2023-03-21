@@ -24,8 +24,12 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['useCookiebarOptin'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['cookieId'] = [
     'exclude' => true,
     'filter' => true,
-    'inputType' => 'select',
-    'foreignKey' => 'tl_cookie.CONCAT(title," (",type,")")',
+    'inputType' => 'picker',
+    'relation' => [
+        'type' => 'hasOne',
+        'load' => 'lazy',
+        'table' => 'tl_cookie',
+    ],
     'eval' => ['mandatory' => true],
     'sql' => 'int(10)',
 ];

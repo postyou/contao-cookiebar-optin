@@ -26,6 +26,12 @@
       <trans-unit id="tl_content.cookiebarOptinImage.1">
         <target>Here you can select an image to be displayed in the background.</target>
       </trans-unit>
+      <trans-unit id="tl_content.cookiebarOptinImageSize.0">
+        <target>Background Image Size</target>
+      </trans-unit>
+      <trans-unit id="tl_content.cookiebarOptinImageSize.1">
+        <target>Here you can select an image size for the background image.</target>
+      </trans-unit>
     </file>
   </body>
 </xliff>

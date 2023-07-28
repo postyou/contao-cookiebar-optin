@@ -34,6 +34,14 @@
         <source>Here you can select an image to be displayed in the background.</source>
         <target>Hier können Sie ein Bild auswählen, welches im Hintergrund dargestellt wird.</target>
       </trans-unit>
+      <trans-unit id="tl_content.cookiebarOptinImageSize.0">
+        <source>Background Image Size</source>
+        <target>Hintergrundbild Größe</target>
+      </trans-unit>
+      <trans-unit id="tl_content.cookiebarOptinImageSize.1">
+        <source>Here you can select an image size for the background image.</source>
+        <target>Hier können Sie ein Bildgröße für das Hintergrundbild auswählen.</target>
+      </trans-unit>
     </file>
   </body>
 </xliff>

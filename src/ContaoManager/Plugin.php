@@ -20,7 +20,7 @@ use Contao\ManagerPlugin\Routing\RoutingPluginInterface;
 use Postyou\ContaoCookiebarOptin\ContaoCookiebarOptinBundle;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Oveleon\ContaoCookiebar\ContaoManager\ContaoCookiebar;
+use Oveleon\ContaoCookiebar\ContaoManager\ContaoCookiebarBundle;
 
 class Plugin implements BundlePluginInterface, RoutingPluginInterface
 {
@@ -28,7 +28,7 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface
     {
         return [
             BundleConfig::create(ContaoCookiebarOptinBundle::class)
-                ->setLoadAfter([ContaoCoreBundle::class, ContaoCookiebarBundle::class]),
+                ->setLoadAfter([ContaoCoreBundle::class, ContaoCookiebarBundle::class, 'dlh_googlemaps']),
         ];
     }
 

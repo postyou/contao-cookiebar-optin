@@ -3,7 +3,6 @@
     "type": "contao-bundle",
     "description": "Extends the oveleon/contao-cookiebar with opt-in functionality for content elements.",
     "license": "LGPL-3.0+",
-    "version": "1.0.0",
     "authors": [
         {
             "name": "POSTYOU Digital- & Filmagentur",

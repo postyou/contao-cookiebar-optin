@@ -69,7 +69,7 @@ class CookiebarOptinElementListener
 
             $image = $this->imagefactory->create(
                 "{$this->rootDir}/{$file->path}",
-                StringUtil::deserialize($contentModel->cookiebarOptinImageSize),
+                StringUtil::deserialize($contentModel->cookiebarOptinImageSize)
             );
 
             $template->backgroundImage = $image->getUrl($this->rootDir, '/');

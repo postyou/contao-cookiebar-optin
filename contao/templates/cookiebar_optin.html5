@@ -1,12 +1,17 @@
 <div id="cookiebar-optin-<?= $this->id ?>" class="cookiebar-optin<?php if ($this->backgroundImage): ?> has-background<?php endif; ?>" <?php if ($this->backgroundImage): ?>style="--cookiebar-optin-background:url('<?= $this->backgroundImage ?>');"<?php endif; ?>>
     <script>
         function _getContent<?= $this->id ?>() {
-            fetch('/_cookiebarOptin/<?= $this->id ?>')
-                .then((res) => res.text())
-                .then((data) => {
-                    const $el = $('#cookiebar-optin-<?= $this->id ?>');
+            const $el = $('#cookiebar-optin-<?= $this->id ?>');
+
+            $.ajax({
+                url: '/_cookiebarOptin/<?= $this->id ?>',
+                success: function(data) {
                     $el.replaceWith(data);
-                });
+                },
+                error: function() {
+                    $el.replaceWith('<?= $this->trans('ERR.general') ?>');
+                }
+            });
         }
 
         document.addEventListener("DOMContentLoaded", function() {

@@ -17,10 +17,10 @@ use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Routing\RoutingPluginInterface;
+use Oveleon\ContaoCookiebar\ContaoManager\ContaoCookiebarBundle;
 use Postyou\ContaoCookiebarOptin\ContaoCookiebarOptinBundle;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Oveleon\ContaoCookiebar\ContaoManager\ContaoCookiebarBundle;
 
 class Plugin implements BundlePluginInterface, RoutingPluginInterface
 {

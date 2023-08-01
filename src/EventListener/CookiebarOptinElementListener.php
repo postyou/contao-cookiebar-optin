@@ -19,7 +19,6 @@ use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\FilesModel;
 use Contao\FrontendTemplate;
 use Contao\StringUtil;
-use Contao\System;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -75,7 +74,6 @@ class CookiebarOptinElementListener
 
             $template->backgroundImage = $image->getUrl($this->projectDir, '/');
         }
-
 
         return $template->parse();
     }

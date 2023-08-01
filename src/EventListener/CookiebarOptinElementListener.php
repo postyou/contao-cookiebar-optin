@@ -30,17 +30,18 @@ class CookiebarOptinElementListener
     private $requestStack;
     private $scopeMatcher;
     private $imagefactory;
-    private $rootDir;
+    private $projectDir;
 
     public function __construct(
         RequestStack $requestStack,
         ScopeMatcher $scopeMatcher,
-        ImageFactoryInterface $imageFactory
+        ImageFactoryInterface $imageFactory,
+        string $projectDir
     ) {
         $this->requestStack = $requestStack;
         $this->scopeMatcher = $scopeMatcher;
         $this->imagefactory = $imageFactory;
-        $this->rootDir = System::getContainer()->getParameter('kernel.project_dir');
+        $this->projectDir = $projectDir;
     }
 
     public function __invoke(ContentModel $contentModel, string $buffer, $element): string
@@ -68,11 +69,11 @@ class CookiebarOptinElementListener
             $file = FilesModel::findByUuid($uuid);
 
             $image = $this->imagefactory->create(
-                "{$this->rootDir}/{$file->path}",
+                "{$this->projectDir}/{$file->path}",
                 StringUtil::deserialize($contentModel->cookiebarOptinImageSize)
             );
 
-            $template->backgroundImage = $image->getUrl($this->rootDir, '/');
+            $template->backgroundImage = $image->getUrl($this->projectDir, '/');
         }
 
 

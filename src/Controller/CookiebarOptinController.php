@@ -15,44 +15,41 @@ namespace Postyou\ContaoCookiebarOptin\Controller;
 use Contao\ContentModel;
 use Contao\Controller;
 use Contao\CoreBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Contao\CoreBundle\InsertTag\InsertTagParser;
+use Contao\PageModel;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/_cookiebarOptin", defaults={"_scope": "frontend"})
- */
+#[Route('/_cookiebarOptin', defaults: ['_scope' => 'frontend'])]
 class CookiebarOptinController extends AbstractController
 {
-    protected $session;
+    public function __construct(
+        private readonly InsertTagParser $insertTagParser,
+    ) {}
 
-    public function __construct(ContainerInterface $container)
-    {
-        $this->session = $container->get('session');
-    }
-
-    /**
-     * @Route("/{optinId}", requirements={"optinId"="\d+"}, methods={"GET"})
-     */
-    public function loadContent(int $optinId): Response
+    #[Route('/{optinId}', requirements: ['optinId' => '\d+'], methods: ['GET'])]
+    public function loadContent(int $optinId, Request $request): Response
     {
         $this->initializeContaoFramework();
 
-        $objPage = $this->session->get('objPage');
-        $GLOBALS['objPage'] = $objPage;
+        $pageId = $request->query->getInt('pageId');
 
         $contentModel = ContentModel::findById($optinId);
+        $pageModel = PageModel::findByPk($pageId);
 
-        if (null === $contentModel) {
+        if (null === $contentModel || null === $pageModel) {
             return new Response();
         }
 
+        $GLOBALS['objPage'] = $pageModel;
+
         $contentModel->useCookiebarOptin = false;
 
-        $res = Controller::getContentElement($optinId);
-        $res = Controller::replaceInsertTags($res);
-        $res = Controller::replaceDynamicScriptTags($res);
+        $content = Controller::getContentElement($optinId);
+        $content = $this->insertTagParser->replace($content);
+        $content = Controller::replaceDynamicScriptTags($content);
 
-        return new Response($res);
+        return new Response($content);
     }
 }

@@ -5,6 +5,9 @@
 
             $.ajax({
                 url: '/_cookiebarOptin/<?= $this->id ?>',
+                data: {
+                    pageId: <?= $this->pageId ?>,
+                },
                 success: function(data) {
                     $el.replaceWith(data);
                 },

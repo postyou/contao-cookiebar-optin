@@ -43,7 +43,7 @@ class CookiebarOptinElementListener
         if (!$contentModel->useCookiebarOptin) {
             return $buffer;
         }
-        
+
         $GLOBALS['TL_CSS'][] = 'bundles/contaocookiebaroptin/cookiebar_optin.css|static';
 
         $template = new FrontendTemplate('cookiebar_optin');

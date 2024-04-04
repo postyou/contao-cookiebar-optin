@@ -29,10 +29,10 @@ class CookiebarOptinElementListener
         private readonly RequestStack $requestStack,
         private readonly ScopeMatcher $scopeMatcher,
         private readonly ImageFactoryInterface $imageFactory,
+
         #[Autowire(param: 'kernel.project_dir')]
         private readonly string $projectDir,
-    ) {
-    }
+    ) {}
 
     /**
      * @param object $element

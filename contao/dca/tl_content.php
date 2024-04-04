@@ -5,16 +5,17 @@ declare(strict_types=1);
 /*
  * This file is part of postyou/contao-cookiebar-optin.
  *
- * (c) POSTYOU Digital- & Filmagentur
+ * (c) POSTYOU Werbeagentur
  *
  * @license LGPL-3.0+
  */
 
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
-use Contao\System;
+
+$GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'useCookiebarOptin';
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['useCookiebarOptin'] = 'cookieId,cookiebarOptinText,cookiebarOptinImage,cookiebarOptinImageSize';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['useCookiebarOptin'] = [
-    'exclude' => true,
     'filter' => true,
     'inputType' => 'checkbox',
     'eval' => ['submitOnChange' => true],
@@ -22,7 +23,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['useCookiebarOptin'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['cookieId'] = [
-    'exclude' => true,
     'filter' => true,
     'inputType' => 'picker',
     'relation' => [
@@ -35,16 +35,14 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['cookieId'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['cookiebarOptinText'] = [
-    'exlude' => true,
     'search' => true,
     'inputType' => 'textarea',
-    'eval' => ['mandatory' => true, 'rte' => 'tinyMCE', 'helpWizard' => true],
+    'eval' => ['mandatory' => true, 'basicEntities' => true, 'rte' => 'tinyMCE', 'helpWizard' => true],
     'explanation' => 'insertTags',
     'sql' => 'mediumtext NULL',
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['cookiebarOptinImage'] = [
-    'exclude' => true,
     'inputType' => 'fileTree',
     'eval' => ['filesOnly' => true, 'fieldType' => 'radio', 'tl_class' => 'clr'],
     'load_callback' => [
@@ -54,29 +52,23 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['cookiebarOptinImage'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['cookiebarOptinImageSize'] = [
-    'exclude' => true,
     'inputType' => 'imageSize',
-    'options' => System::getImageSizes(),
     'reference' => &$GLOBALS['TL_LANG']['MSC'],
     'eval' => ['rgxp' => 'natural', 'includeBlankOption' => true, 'nospace' => true, 'helpwizard' => true, 'tl_class' => 'w50'],
-    'sql' => "varchar(64) NOT NULL default ''",
+    'sql' => "varchar(128) COLLATE ascii_bin NOT NULL default ''",
 ];
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'useCookiebarOptin';
-$GLOBALS['TL_DCA']['tl_content']['subpalettes']['useCookiebarOptin'] = '
-    cookieId,cookiebarOptinText,cookiebarOptinImage,cookiebarOptinImageSize
-';
-
-$palettes = array_keys($GLOBALS['TL_DCA']['tl_content']['palettes']);
+$pm = PaletteManipulator::create()
+    ->addField('useCookiebarOptin', 'protected')
+;
 
 // Add field to all palettes in tl_content
-foreach ($palettes as $palette) {
-    if ('__selector__' === $palette) {
+foreach ($GLOBALS['TL_DCA']['tl_content']['palettes'] as $name => $palette) {
+    if ('__selector__' === $name) {
         continue;
     }
 
-    PaletteManipulator::create()
-        ->addField('useCookiebarOptin', 'protected')
-        ->applyToPalette($palette, 'tl_content')
-    ;
+    $pm->applyToPalette($name, 'tl_content');
 }
+
+unset($name, $palette, $pm);

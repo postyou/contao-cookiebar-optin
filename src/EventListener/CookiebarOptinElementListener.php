@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of postyou/contao-cookiebar-optin.
  *
- * (c) POSTYOU Digital- & Filmagentur
+ * (c) POSTYOU Werbeagentur
  *
  * @license LGPL-3.0+
  */
@@ -60,7 +60,7 @@ class CookiebarOptinElementListener
 
             $image = $this->imageFactory->create(
                 "{$this->projectDir}/{$file->path}",
-                StringUtil::deserialize($contentModel->cookiebarOptinImageSize)
+                StringUtil::deserialize($contentModel->cookiebarOptinImageSize),
             );
 
             $template->backgroundImage = $image->getUrl($this->projectDir, '/');

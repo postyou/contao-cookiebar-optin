@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of postyou/contao-cookiebar-optin.
  *
- * (c) POSTYOU Digital- & Filmagentur
+ * (c) POSTYOU Werbeagentur
  *
  * @license LGPL-3.0+
  */
@@ -36,7 +36,7 @@ class CookiebarOptinController extends AbstractController
         $pageId = $request->query->getInt('pageId');
 
         $contentModel = ContentModel::findById($optinId);
-        $pageModel = PageModel::findByPk($pageId);
+        $pageModel = PageModel::findById($pageId);
 
         if (null === $contentModel || null === $pageModel) {
             return new Response();

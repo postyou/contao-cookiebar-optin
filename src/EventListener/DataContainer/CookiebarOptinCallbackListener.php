@@ -26,13 +26,16 @@ class CookiebarOptinCallbackListener
     ) {}
 
     #[AsCallback('tl_content', 'fields.cookieId.load')]
-    public function loadLanguageFile($value)
+    public function loadLanguageFile(mixed $value): mixed
     {
         System::loadLanguageFile('tl_cookie');
 
         return $value;
     }
 
+    /**
+     * @return array<string, array<string>>
+     */
     #[AsCallback('tl_content', 'fields.cookiebarOptinImageSize.options')]
     public function imageSizeOptions(): array
     {

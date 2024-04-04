@@ -12,12 +12,17 @@ declare(strict_types=1);
 
 namespace Postyou\ContaoCookiebarOptin;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
-class ContaoCookiebarOptinBundle extends Bundle
+class ContaoCookiebarOptinBundle extends AbstractBundle
 {
-    public function getPath(): string
+    /**
+     * @param array<mixed> $config
+     */
+    public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
-        return \dirname(__DIR__);
+        $container->import('../config/services.php');
     }
 }

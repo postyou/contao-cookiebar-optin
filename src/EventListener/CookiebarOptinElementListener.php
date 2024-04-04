@@ -19,6 +19,7 @@ use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\FilesModel;
 use Contao\FrontendTemplate;
 use Contao\StringUtil;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 #[AsHook('getContentElement')]
@@ -28,9 +29,14 @@ class CookiebarOptinElementListener
         private readonly RequestStack $requestStack,
         private readonly ScopeMatcher $scopeMatcher,
         private readonly ImageFactoryInterface $imageFactory,
+        #[Autowire(param: 'kernel.project_dir')]
         private readonly string $projectDir,
-    ) {}
+    ) {
+    }
 
+    /**
+     * @param object $element
+     */
     public function __invoke(ContentModel $contentModel, string $buffer, $element): string
     {
         $request = $this->requestStack->getCurrentRequest();

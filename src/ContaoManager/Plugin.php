@@ -34,7 +34,7 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface
 
     public function getRouteCollection(LoaderResolverInterface $resolver, KernelInterface $kernel)
     {
-        $path = '@ContaoCookiebarOptin/src/Controller';
+        $path = '@ContaoCookiebarOptinBundle/src/Controller';
 
         return $resolver->resolve($path, 'attribute')->load($path);
     }
